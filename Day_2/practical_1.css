@@ -117,7 +117,3 @@ footer a{
     font-family: Arial, sans-serif;
     transition: 0.3s;
 }
-
-footer a:hover{
-    color: yellow;
-}
