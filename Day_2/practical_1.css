@@ -4,68 +4,77 @@
     box-sizing: border-box;
 }
 
-/* Header */
+body{
+    background-color: #e2e8f0;
+}
+
+/*  header section  */
 header{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #1e3a5f;
-    padding: 15px 40px;
+    position: fixed;
+    width: 100%;
+    z-index: 1;
 }
 
-header div:first-child{
+div{
     display: flex;
+    padding: 20px;
     align-items: center;
-    gap: 15px;
+    justify-content: center;
+    background-color: #0f172a;
 }
 
-header img{
+img{
     width: 300px;
+    height: 100px;
+    margin-right: 100px;
 }
 
-header h2{
+div h2{
     color: white;
-    font-size: 28px;
-    font-family: Arial, sans-serif;
+    font-size: 40px;
+    justify-content: center;
+    margin-right: 200px;
+
 }
 
 nav{
     display: flex;
-    gap: 25px;
+    gap: 20px;
 }
 
-nav li{
+li{
     list-style: none;
+    gap: 10px;
 }
 
-nav a{
-    text-decoration: none;
-    color: white;
-    font-size: 18px;
-    font-family: Arial, sans-serif;
+a{
+    text-decoration: underline;
+    font-size: 20px;
+    color: #ffffff;
+    
 }
 
-/*  main  */
+/*  main section  */
+main{
+    padding-top: 140px;
+}
+
 article{
-    width: 400px;
+    width: 450px;
     margin: 40px auto;
-    background-color:aliceblue;
+    background-color: #ffffff;
     padding: 25px;
     border-radius: 10px;
     box-shadow: 0px 0px 10px lightgray;
 }
 
 article h2{
-    margin-bottom: 40px;
-}
-
-h2{
-    color: darkblue;
+    margin-bottom: 30px;
 }
 
 label{
     display: inline-block;
-    width: 100px;
+    width: 110px;
     font-weight: bold;
 }
 
@@ -86,34 +95,9 @@ button{
 }
 
 #btn1{
-    background-color: green;
+    background-color: #16a34a;
 }
 
 #btn2{
-    background-color: brown;
-}
-
-/* Footer */
-footer{
-    background-color: #1e3a5f;
-    padding: 20px 0;
-    margin-top: 30px;
-}
-
-footer nav{
-    display: flex;
-    justify-content: center;
-    gap: 25px;
-}
-
-footer li{
-    list-style: none;
-}
-
-footer a{
-    text-decoration: none;
-    color: white;
-    font-size: 18px;
-    font-family: Arial, sans-serif;
-    transition: 0.3s;
+    background-color: #dc2626;
 }
