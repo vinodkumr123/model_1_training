@@ -1,350 +1,304 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Animated Resume</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animated Resume</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family:Arial,sans-serif;
+        }
 
-  <style>
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-      font-family: Arial, sans-serif;
-    }
+        body{
+            background:linear-gradient(135deg,#dfe4ea,#f1f2f6);
+            min-height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            padding:30px;
+            overflow-x:hidden;
+        }
 
-    body{
-      background: linear-gradient(135deg,#0f172a,#1e293b,#334155);
-      min-height:100vh;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      padding:40px;
-      color:white;
-      overflow-x:hidden;
-    }
+        .resume{
+            width:950px;
+            background:white;
+            display:flex;
+            border-radius:20px;
+            overflow:hidden;
+            box-shadow:0 10px 40px rgba(0,0,0,0.2);
+            animation:zoomIn 1s ease;
+        }
 
-    .resume{
-      width:1000px;
-      background:rgba(255,255,255,0.08);
-      backdrop-filter: blur(12px);
-      border-radius:25px;
-      overflow:hidden;
-      display:flex;
-      box-shadow:0 10px 40px rgba(0,0,0,0.4);
-      animation: fadeIn 1.5s ease;
-    }
+        .left{
+            width:35%;
+            background:#d8dbe0;
+            padding:40px 30px;
+            text-align:center;
+            transform:translateX(-300px);
+            opacity:0;
+            animation:leftSlide 1.2s ease forwards;
+        }
 
-    /* LEFT SIDE */
+        .profile img{
+            width:220px;
+            height:220px;
+            border-radius:50%;
+            object-fit:cover;
+            border:8px solid white;
+            box-shadow:0 10px 20px rgba(0,0,0,0.2);
+            transition:0.5s;
+        }
 
-    .left{
-      width:35%;
-      background:linear-gradient(180deg,#2563eb,#1d4ed8);
-      padding:40px 30px;
-      text-align:center;
-      position:relative;
-    }
+        span{
+            margin-top:25px;
+            font-size:30px;
+            color:#3d3942;
+            font-weight:bold;
+            line-height:50px;
+        }
 
-    .profile{
-      width:170px;
-      height:170px;
-      border-radius:50%;
-      border:5px solid white;
-      object-fit:cover;
-      animation: float 3s ease-in-out infinite;
-      transition:0.5s;
-    }
+        .role{
+            margin-top:10px;
+            font-size:22px;
+            color:#444;
+            letter-spacing:2px;
+        }
 
-    .profile:hover{
-      transform:scale(1.08) rotate(5deg);
-    }
+        .contact{
+            margin-top:40px;
+            text-align:left;
+            line-height: 15px;
+        }
 
-    .left h1{
-      margin-top:20px;
-      font-size:32px;
-      letter-spacing:1px;
-    }
+        .contact p{
+            margin:18px 0;
+            font-size:20px;
+            color:#333;
+            transition:0.4s;
+        }
 
-    .left p{
-      margin-top:10px;
-      font-size:18px;
-      opacity:0.9;
-    }
+        .contact p:hover{
+            transform:translateX(10px);
+            color:#5b5462;
+        }
 
-    .contact{
-      margin-top:40px;
-      text-align:left;
-    }
+        .title{
+            margin-top:40px;
+            background:#5b5462;
+            color:white;
+            padding:12px;
+            font-size:30px;
+            font-weight:bold;
+            transition:0.4s;
+        }
 
-    .contact h2,
-    .skills h2{
-      margin-bottom:15px;
-      border-bottom:2px solid rgba(255,255,255,0.4);
-      padding-bottom:8px;
-    }
+        .title:hover{
+            background:#3f3945;
+            letter-spacing:3px;
+        }
 
-    .contact p{
-      margin:12px 0;
-      font-size:15px;
-    }
+        .skills{
+            margin-top:25px;
+            text-align:left;
+            padding-left:20px;
+        }
 
-    .skills{
-      margin-top:35px;
-      text-align:left;
-    }
+        .skills li{
+            margin:15px 0;
+            font-size:18px;
+            transition:0.4s;
+        }
 
-    .skill{
-      margin-bottom:20px;
-    }
+        .skills li:hover{
+            transform:translateX(10px);
+            color:#5b5462;
+        }
 
-    .skill span{
-      display:block;
-      margin-bottom:8px;
-    }
+        .right{
+            width:65%;
+            padding:50px;
+            transform:translateX(300px);
+            opacity:0;
+            animation:rightSlide 1.2s ease forwards;
+        }
 
-    .bar{
-      width:100%;
-      height:10px;
-      background:rgba(255,255,255,0.2);
-      border-radius:20px;
-      overflow:hidden;
-    }
+        .section{
+            margin-top:50px;
+        }
 
-    .fill{
-      height:100%;
-      border-radius:20px;
-      animation: load 2s ease forwards;
-    }
+        .section-title{
+            background:#5b5462;
+            color:white;
+            display:inline-block;
+            padding:12px 40px;
+            font-size:32px;
+            font-weight:bold;
+            margin-bottom:30px;
+            transition:0.4s;
+        }
 
-    .html{ width:90%; background:#f97316; }
-    .css{ width:85%; background:#06b6d4; }
-    .js{ width:75%; background:#eab308; }
+        .section-title:hover{
+            transform:scale(1.05);
+            background:#3f3945;
+        }
 
-    /* RIGHT SIDE */
+        .timeline{
+            position:relative;
+            margin-left:20px;
+            padding-left:40px;
+            border-left:4px solid #5b5462;
+        }
 
-    .right{
-      width:65%;
-      padding:50px;
-    }
+        .item{
+            position:relative;
+            margin-bottom:40px;
+            opacity:0;
+            transform:translateY(50px);
+            animation:fadeUp 1s ease forwards;
+        }
 
-    .section{
-      margin-bottom:40px;
-      animation: slideUp 1s ease;
-    }
+        .item:nth-child(1){
+            animation-delay:0.8s;
+        }
 
-    .section h2{
-      font-size:28px;
-      color:#60a5fa;
-      margin-bottom:15px;
-      position:relative;
-    }
+        .item:nth-child(2){
+            animation-delay:1.2s;
+        }
 
-    .section h2::after{
-      content:"";
-      position:absolute;
-      left:0;
-      bottom:-5px;
-      width:70px;
-      height:4px;
-      background:#3b82f6;
-      border-radius:20px;
-    }
+        .item::before{
+            content:"";
+            position:absolute;
+            width:18px;
+            height:18px;
+            background:#5b5462;
+            border-radius:50%;
+            left:-51.6px;
+            top:5px;
+            transition:0.4s;
+        }
 
-    .section p{
-      line-height:1.8;
-      color:#e2e8f0;
-    }
+        .item:hover::before{
+            transform:scale(1.5);
+            background:#2d2a31;
+        }
 
-    .edu-box,
-    .exp-box{
-      background:rgba(255,255,255,0.07);
-      padding:20px;
-      border-radius:15px;
-      margin-top:20px;
-      transition:0.4s;
-      border:1px solid rgba(255,255,255,0.1);
-    }
+        .item h3{
+            font-size:28px;
+            margin-bottom:10px;
+            color:#222;
+        }
 
-    .edu-box:hover,
-    .exp-box:hover{
-      transform:translateY(-8px) scale(1.02);
-      background:rgba(255,255,255,0.12);
-    }
+        .item p{
+            font-size:18px;
+            color:#444;
+            line-height:20px;
+            text-align:justify;
+        }
 
-    .edu-box h3,
-    .exp-box h3{
-      margin-bottom:10px;
-      color:#93c5fd;
-    }
+        @keyframes leftSlide{
+            to{
+                transform:translateX(0);
+                opacity:1;
+            }
+        }
 
-    /* ANIMATIONS */
+        @keyframes rightSlide{
+            to{
+                transform:translateX(0);
+                opacity:1;
+            }
+        }
 
-    @keyframes float{
-      0%{
-        transform:translateY(0px);
-      }
-      50%{
-        transform:translateY(-12px);
-      }
-      100%{
-        transform:translateY(0px);
-      }
-    }
+        @keyframes fadeUp{
+            to{
+                opacity:1;
+                transform:translateY(0);
+            }
+        }
 
-    @keyframes fadeIn{
-      from{
-        opacity:0;
-        transform:scale(0.9);
-      }
-      to{
-        opacity:1;
-        transform:scale(1);
-      }
-    }
+        @keyframes zoomIn{
+            from{
+                transform:scale(0.8);
+                opacity:0;
+            }
 
-    @keyframes slideUp{
-      from{
-        opacity:0;
-        transform:translateY(40px);
-      }
-      to{
-        opacity:1;
-        transform:translateY(0);
-      }
-    }
-
-    @keyframes load{
-      from{
-        width:0;
-      }
-    }
-
-    /* RESPONSIVE */
-
-    @media(max-width:900px){
-
-      .resume{
-        flex-direction:column;
-      }
-
-      .left,
-      .right{
-        width:100%;
-      }
-
-      .right{
-        padding:30px;
-      }
-    }
-
-  </style>
+            to{
+                transform:scale(1);
+                opacity:1;
+            }
+        }
+    </style>
 </head>
-
 <body>
-
-  <div class="resume">
-
-    <!-- LEFT -->
-
-    <div class="left">
-
-      <img 
-      class="profile"
-      src="" 
-      alt="profile">
-
-      <h1>Vinod Kumar</h1>
-      <p>Frontend Developer</p>
-
-      <div class="contact">
-        <h2>Contact</h2>
-
-        <p>📧 vinod@gmail.com</p>
-        <p>📱 +91 9876543210</p>
-        <p>📍 Ahmedabad, India</p>
-      </div>
-
-      <div class="skills">
-
-        <h2>Skills</h2>
-
-        <div class="skill">
-          <span>HTML</span>
-          <div class="bar">
-            <div class="fill html"></div>
-          </div>
+    <div class="resume">
+        <!-- LEFT -->
+        <div class="left">
+            <div class="profile">
+                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=800&auto=format&fit=crop" alt="profile">
+            </div>
+            <span>Olivia Wilson</span>
+            <div class="role">TEACHER</div>
+            <div class="contact">
+                <p>📞 +1234-5678-9012</p>
+                <p>✉️ oliviawilson@email.com</p>
+                <p>📍 4618 Sunrise Road</p>
+            </div>
+            <div class="title">SKILL</div>
+            <ul class="skills">
+                <li>Student Development</li>
+                <li>Classroom Management</li>
+                <li>Extracurricular Activities</li>
+                <li>Plan Development</li>
+            </ul>
         </div>
 
-        <div class="skill">
-          <span>CSS</span>
-          <div class="bar">
-            <div class="fill css"></div>
-          </div>
+        <!-- RIGHT -->
+        <div class="right">
+            <div class="section">
+                <div class="section-title">EDUCATION</div>
+                <div class="timeline">
+                    <div class="item">
+                        <h3>University of Virginia (2011)</h3>
+                        <p>
+                            English Literature. Provided after school
+                            tutoring for students in need of special attention.
+                        </p>
+                    </div>
+                    <div class="item">
+                        <h3>University of England (2014)</h3>
+                        <p>
+                            M.A. in Education. Provided after school
+                            tutoring for students in need of special attention.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">EXPERIENCE</div>
+                <div class="timeline">
+                    <div class="item">
+                        <h3>2011-2012 King School</h3>
+                        <p>
+                            Taught English and History summer school
+                            classes for 3rd and 4th grade students
+                            who had fallen behind.
+                        </p>
+                    </div>
+                    <div class="item">
+                        <h3>2011-2012 Magnolia School</h3>
+                        <p>
+                            Provided a variety of hands-on learning
+                            experiences that included the use of
+                            modern teaching methods.
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <div class="skill">
-          <span>JavaScript</span>
-          <div class="bar">
-            <div class="fill js"></div>
-          </div>
-        </div>
-
-      </div>
-
     </div>
-
-    <!-- RIGHT -->
-
-    <div class="right">
-
-      <div class="section">
-        <h2>About Me</h2>
-
-        <p>
-          Passionate frontend developer with strong knowledge of HTML, CSS,
-          JavaScript and responsive web design. I love creating modern,
-          beautiful and user-friendly websites.
-        </p>
-      </div>
-
-      <div class="section">
-        <h2>Education</h2>
-
-        <div class="edu-box">
-          <h3>Bachelor of Computer Application</h3>
-          <p>XYZ College • 2022 - 2025</p>
-        </div>
-
-        <div class="edu-box">
-          <h3>Higher Secondary</h3>
-          <p>ABC School • 2020 - 2022</p>
-        </div>
-      </div>
-
-      <div class="section">
-        <h2>Experience</h2>
-
-        <div class="exp-box">
-          <h3>Frontend Intern</h3>
-          <p>
-            Worked on responsive websites, animations, and modern UI design
-            using HTML and CSS.
-          </p>
-        </div>
-
-        <div class="exp-box">
-          <h3>Freelance Web Designer</h3>
-          <p>
-            Designed attractive landing pages and portfolio websites for
-            clients.
-          </p>
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-
-</body>
+  </body>
 </html>
