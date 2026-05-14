@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body{
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+        }
+
+        #container{
+            height: 500px;
+            width: 500px;
+            background-color: antiquewhite;
+            margin: auto;
+            color: white;
+        }
+
+        #heading{
+            padding: 10px;
+            font-weight: 100;
+            font-size: 30px;
+            text-align: center;
+            background-color: brown;
+        }
+
+        #content{
+            margin: 70px;
+            text-align: center;
+        }
+
+        input, button{
+            padding: 10px;
+            border-radius: 10px;
+            border-style: none;
+            font-size: 20px;
+        }
+
+        button{
+            background-color: green;
+            color: white;
+            cursor: pointer;
+        }
+
+        #result{
+            margin: 70px;
+            padding: 10px;
+            text-align: center;
+            font-size: 20px;
+            color: white;
+            background-color: brown;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="heading"><h2>Weather-Web</h2></div>
+        <div id="content">
+            <input type="text" placeholder="Enter City Name">
+            <button onclick="getWeather()">Search</button>
+        </div>
+        <div id="result">Output</div>
+    </div>
+    <script>
+        async function getWeather() {
+            let response = await fetch("https://api.openweathermap.org/data/2.5/weather?q=Delhi&appid=7ec95472b404a0867b07a113a5153754&units=metric");
+            let data = await response.json();
+            document.getElementById("result").innerHTML = "Temperature: " + data.main.temp + "°C";
+        }
+    </script>
+  </body>
+</html>
