@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Float</title>
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial,sans-serif;
+    }
+
+    .container{
+      background:white;
+      padding:20px;
+      border-radius:10px;
+    }
+
+    .left-box{
+      float:left;
+      width:200px;
+      height:200px;
+      background:tomato;
+      color:white;
+      text-align:center;
+      line-height:200px;
+      margin-right:20px;
+      border-radius:10px;
+    }
+
+    .right-box{
+      float:right;
+      width:200px;
+      height:200px;
+      background:royalblue;
+      color:white;
+      text-align:center;
+      line-height:200px;
+      margin-left:20px;
+      border-radius:10px;
+    }
+
+    p{
+      font-size:18px;
+      line-height:30px;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="left-box">Float Left</div>
+    <div class="right-box">Float Right</div>
+    <p>
+      The float property is used to move elements to the left or right side. 
+      Text automatically adjusts around the floated elements. Here, the red 
+      box is floated to the left and the blue box is floated to the right.
+    </p>
+  </div>
+ </body>
+</html>

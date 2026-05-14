@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Media Query</title>
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial,sans-serif;
+    }
+
+    body{
+      background:#f4f4f4;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      height:100vh;
+    }
+
+    .container{
+      width:500px;
+      background:white;
+      padding:30px;
+      border-radius:15px;
+      text-align:center;
+    }
+
+    h1{
+      color:blue;
+      margin-bottom:20px;
+    }
+
+    p{
+      font-size:20px;
+      color:#333;
+    }
+
+    @media(max-width:768px){
+      body{
+        background:lightblue;
+      }
+
+      .container{
+        width:90%;
+      }
+
+      h1{
+        color:red;
+      }
+
+      p{
+        font-size:18px;
+      }
+    }
+
+    @media(max-width:480px){
+      body{
+        background:lightgreen;
+      }
+
+      h1{
+        font-size:28px;
+        color:green;
+      }
+
+      p{
+        font-size:16px;
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Media Query Example</h1>
+    <p>Resize the screen to see responsive changes.</p>
+  </div>
+ </body>
+</html>

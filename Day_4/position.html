@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>position</title>
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial, sans-serif;
+    }
+
+    body{
+      background:#f4f4f4;
+      height:200vh;
+    }
+
+    .fixed-box{
+      position:fixed;
+      top:10px;
+      right:20px;
+      background:red;
+      color:white;
+      padding:15px;
+      border-radius:10px;
+      z-index:1000;
+    }
+
+    .sticky-box{
+      position:sticky;
+      top:0;
+      background:#222;
+      color:white;
+      padding:20px;
+      text-align:center;
+      font-size:22px;
+    }
+
+    .container{
+      width:60%;
+      margin:50px auto;
+      border:3px solid black;
+      padding:40px;
+      position:relative;
+      background:white;
+      height:400px;
+    }
+
+    .static-box{
+      position:static;
+      background:orange;
+      padding:20px;
+      margin-bottom:20px;
+    }
+
+    .relative-box{
+      position:relative;
+      top:20px;
+      left:30px;
+      background:green;
+      color:white;
+      padding:20px;
+      width:250px;
+      margin-bottom:40px;
+    }
+
+    .absolute-box{
+      position:absolute;
+      top:250px;
+      right:40px;
+      background:blue;
+      color:white;
+      padding:20px;
+      width:250px;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="fixed-box">Fixed Position</div>
+  <div class="sticky-box">Sticky Position Navbar</div>
+
+  <div class="container">
+    <div class="static-box">Static Position (Default)</div>
+    <div class="relative-box">Relative Position</div>
+    <div class="absolute-box">Absolute Position</div>
+  </div>
+
+</body>
+</html>
