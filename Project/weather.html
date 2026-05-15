@@ -24,6 +24,9 @@
             background-color: antiquewhite;
             margin: auto;
             color: white;
+            display: flex;
+            justify-content:space-between;
+            flex-direction: column;
         }
 
         #heading{
@@ -53,10 +56,9 @@
         }
 
         #result{
-            margin: 70px;
             padding: 10px;
             text-align: center;
-            font-size: 20px;
+            font-size: 30px;
             color: white;
             background-color: brown;
         }
@@ -66,14 +68,15 @@
     <div id="container">
         <div id="heading"><h2>Weather-Web</h2></div>
         <div id="content">
-            <input type="text" placeholder="Enter City Name">
+            <input id="city" type="text" placeholder="Enter City Name">
             <button onclick="getWeather()">Search</button>
         </div>
-        <div id="result">Output</div>
+        <div id="result"><h3>Output</h3></div>
     </div>
     <script>
         async function getWeather() {
-            let response = await fetch("https://api.openweathermap.org/data/2.5/weather?q=Delhi&appid=7ec95472b404a0867b07a113a5153754&units=metric");
+        let city = document.getElementById("city").value;
+            let response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=7ec95472b404a0867b07a113a5153754&units=metric`);
             let data = await response.json();
             document.getElementById("result").innerHTML = "Temperature: " + data.main.temp + "°C";
         }
