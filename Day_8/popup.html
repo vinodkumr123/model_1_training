@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bootstrap Popup Boxes</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+  <div class="container text-center mt-5">
+    <h1 class="mb-4">Popup Boxes</h1>
+    <button class="btn btn-primary m-2" data-bs-toggle="modal" data-bs-target="#simpleModal">Simple</button>
+    <button class="btn btn-success m-2" data-bs-toggle="modal" data-bs-target="#loginModal">Login</button>
+    <button class="btn btn-dark m-2" data-bs-toggle="modal" data-bs-target="#registerModal">Register</button>
+    <button class="btn btn-warning m-2" data-bs-toggle="modal" data-bs-target="#fullModal">Fullscreen</button>
+  </div>
+
+  <div class="modal fade" id="simpleModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Welcome</h4>
+          <button class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+
+        <div class="modal-body">This is a simple popup box.</div>
+        <div class="modal-footer">
+          <button class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="loginModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Login Form</h4>
+          <button class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+
+        <div class="modal-body">
+          <input type="email" class="form-control mb-3" placeholder="Enter Email">
+          <input type="password" class="form-control" placeholder="Enter Password">
+        </div>
+
+        <div class="modal-footer">
+          <button class="btn btn-primary">Login</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="registerModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Registration Form</h4>
+          <button class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+
+        <div class="modal-body">
+          <input type="text" class="form-control mb-3" placeholder="Full Name">
+          <input type="email" class="form-control mb-3" placeholder="Email">
+          <input type="password" class="form-control" placeholder="Password">
+        </div>
+
+        <div class="modal-footer">
+          <button class="btn btn-success">Register</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="fullModal">
+    <div class="modal-dialog modal-fullscreen">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-title">Fullscreen Popup</h3>
+          <button class="btn-close"data-bs-dismiss="modal"></button>
+        </div>
+
+        <div class="modal-body text-center">
+          <h1 class="mt-5"> Fullscreen Modal
+          </h1>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
