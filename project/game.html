@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Zone</title>
+    <style>
+    *{
+        margin:0;
+        padding:0;
+        box-sizing:border-box;
+        font-family:Arial,sans-serif;
+    }
+
+    body{
+        min-height:100vh;
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        background:linear-gradient(135deg,#0f172a,#1e293b);
+        color:white;
+        padding:20px;
+    }
+
+    .container{
+        text-align:center;
+    }
+
+    h1{
+        font-size:30px;
+    }
+
+    .options{
+        margin-bottom: 5px;
+    }
+
+    .options a{
+        text-decoration:none;
+        color:white;
+        background:#2563eb;
+        padding:12px 25px;
+        border-radius:10px;
+        margin:10px;
+        display:inline-block;
+        font-weight:bold;
+        transition:0.3s;
+    }
+
+    .options a:hover{
+        background:#1d4ed8;
+        transform:scale(1.05);
+    }
+
+    #chess{
+        display:none;
+    }
+
+    #chess:target{
+        display:block;
+    }
+
+    #chess:target ~ #tic{
+        display:none;
+    }
+
+    .tic-board{
+        display:grid;
+        grid-template-columns:repeat(3,120px);
+        gap:10px;
+        justify-content:center;
+    }
+
+    .cell{
+        width:120px;
+        height:120px;
+        background:white;
+        border-radius:12px;
+        overflow:hidden;
+    }
+
+    .cell input{
+        width:100%;
+        height:100%;
+        border:none;
+        outline:none;
+        text-align:center;
+        font-size:70px;
+        font-weight:bold;
+        color:#2563eb;
+        text-transform:uppercase;
+    }
+
+    .cell input:focus{
+        background:#dbeafe;
+    }
+
+    .chess-board{
+        display:grid;
+        grid-template-columns:repeat(8,70px);
+        margin:auto;
+    }
+
+    .chess-cell{
+        width:70px;
+        height:70px;
+    }
+
+    .chess-cell input{
+        width:100%;
+        height:100%;
+        border:none;
+        outline:none;
+        text-align:center;
+        font-size:38px;
+        background:transparent;
+        cursor:pointer;
+    }
+
+    .white{
+        background:#f1f5f9;
+    }
+
+    .black{
+        background:#475569;
+    }
+
+    .black-piece{
+        color:black;
+    }
+
+    .white-piece{
+        color: darkgoldenrod;
+    }
+
+    .game-box{
+        animation:fade 0.5s ease;
+    }
+
+    @keyframes fade{
+        from{
+            opacity:0;
+            transform:translateY(20px);
+        }
+        to{
+            opacity:1;
+            transform:translateY(0);
+        }
+    }
+
+  </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Game Zone</h1>
+        <div class="options">
+            <a href="#tic">Tic Tac</a>
+            <a href="#chess">Chess</a>
+        </div>
+
+        <!-- Chess -->
+        <div id="chess" class="game-box">
+            <h2 style="margin-bottom: 10px;">Chess Board</h2>
+            <div class="chess-board">
+
+                <!-- Black Pieces -->
+                <div class="chess-cell white"><input class="black-piece" type="text" value="♜"></div>
+                <div class="chess-cell black"><input class="black-piece" type="text" value="♞"></div>
+                <div class="chess-cell white"><input class="black-piece" type="text" value="♝"></div>
+                <div class="chess-cell black"><input class="black-piece" type="text" value="♛"></div>
+                <div class="chess-cell white"><input class="black-piece" type="text" value="♚"></div>
+                <div class="chess-cell black"><input class="black-piece" type="text" value="♝"></div>
+                <div class="chess-cell white"><input class="black-piece" type="text" value="♞"></div>
+                <div class="chess-cell black"><input class="black-piece" type="text" value="♜"></div>
+
+                <!-- Black Pawns -->
+                <div class="chess-cell black"><input class="black-piece" type="text" value="♟"></div>
+                <div class="chess-cell white"><input class="black-piece" type="text" value="♟"></div>
+                <div class="chess-cell black"><input class="black-piece" type="text" value="♟"></div>
+                <div class="chess-cell white"><input class="black-piece" type="text" value="♟"></div>
+                <div class="chess-cell black"><input class="black-piece" type="text" value="♟"></div>
+                <div class="chess-cell white"><input class="black-piece" type="text" value="♟"></div>
+                <div class="chess-cell black"><input class="black-piece" type="text" value="♟"></div>
+                <div class="chess-cell white"><input class="black-piece" type="text" value="♟"></div>
+
+                <!-- Empty Rows -->
+                <div class="chess-cell white"><input type="text"></div>
+                <div class="chess-cell black"><input type="text"></div>
+                <div class="chess-cell white"><input type="text"></div>
+                <div class="chess-cell black"><input type="text"></div>
+                <div class="chess-cell white"><input type="text"></div>
+                <div class="chess-cell black"><input type="text"></div>
+                <div class="chess-cell white"><input type="text"></div>
+                <div class="chess-cell black"><input type="text"></div>
+
+                <div class="chess-cell black"><input type="text"></div>
+                <div class="chess-cell white"><input type="text"></div>
+                <div class="chess-cell black"><input type="text"></div>
+                <div class="chess-cell white"><input type="text"></div>
+                <div class="chess-cell black"><input type="text"></div>
+                <div class="chess-cell white"><input type="text"></div>
+                <div class="chess-cell black"><input type="text"></div>
+                <div class="chess-cell white"><input type="text"></div>
+
+                <div class="chess-cell white"><input type="text"></div>
+                <div class="chess-cell black"><input type="text"></div>
+                <div class="chess-cell white"><input type="text"></div>
+                <div class="chess-cell black"><input type="text"></div>
+                <div class="chess-cell white"><input type="text"></div>
+                <div class="chess-cell black"><input type="text"></div>
+                <div class="chess-cell white"><input type="text"></div>
+                <div class="chess-cell black"><input type="text"></div>
+
+                <div class="chess-cell black"><input type="text"></div>
+                <div class="chess-cell white"><input type="text"></div>
+                <div class="chess-cell black"><input type="text"></div>
+                <div class="chess-cell white"><input type="text"></div>
+                <div class="chess-cell black"><input type="text"></div>
+                <div class="chess-cell white"><input type="text"></div>
+                <div class="chess-cell black"><input type="text"></div>
+                <div class="chess-cell white"><input type="text"></div>
+
+                <!-- White Pawns -->
+                <div class="chess-cell white"><input class="white-piece" type="text" value="♟"></div>
+                <div class="chess-cell black"><input class="white-piece" type="text" value="♟"></div>
+                <div class="chess-cell white"><input class="white-piece" type="text" value="♟"></div>
+                <div class="chess-cell black"><input class="white-piece" type="text" value="♟"></div>
+                <div class="chess-cell white"><input class="white-piece" type="text" value="♟"></div>
+                <div class="chess-cell black"><input class="white-piece" type="text" value="♟"></div>
+                <div class="chess-cell white"><input class="white-piece" type="text" value="♟"></div>
+                <div class="chess-cell black"><input class="white-piece" type="text" value="♟"></div>
+
+                <!-- White Pieces -->
+                <div class="chess-cell black"><input class="white-piece" type="text" value="♜"></div>
+                <div class="chess-cell white"><input class="white-piece" type="text" value="♞"></div>
+                <div class="chess-cell black"><input class="white-piece" type="text" value="♝"></div>
+                <div class="chess-cell white"><input class="white-piece" type="text" value="♛"></div>
+                <div class="chess-cell black"><input class="white-piece" type="text" value="♚"></div>
+                <div class="chess-cell white"><input class="white-piece" type="text" value="♝"></div>
+                <div class="chess-cell black"><input class="white-piece" type="text" value="♞"></div>
+                <div class="chess-cell white"><input class="white-piece" type="text" value="♜"></div>
+            </div>
+        </div>
+
+        <!-- Tic Tac Toe -->
+        <div id="tic" class="game-box">
+            <h2 style="margin-bottom:20px;">Tic Tac Toe</h2>
+            <div class="tic-board">
+                <div class="cell"><input type="text" maxlength="1"></div>
+                <div class="cell"><input type="text" maxlength="1"></div>
+                <div class="cell"><input type="text" maxlength="1"></div>
+                <div class="cell"><input type="text" maxlength="1"></div>
+                <div class="cell"><input type="text" maxlength="1"></div>
+                <div class="cell"><input type="text" maxlength="1"></div>
+                <div class="cell"><input type="text" maxlength="1"></div>
+                <div class="cell"><input type="text" maxlength="1"></div>
+                <div class="cell"><input type="text" maxlength="1"></div>
+            </div>
+        </div>
+    </div>
+  </body>
+</html>
