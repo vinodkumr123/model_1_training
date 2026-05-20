@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Tailwind Animations</title>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center gap-10 flex-wrap p-10">
+  <!-- Bounce Animation -->
+  <div class="w-24 h-24 bg-blue-500 rounded-xl animate-bounce flex items-center justify-center text-white font-bold">
+    Bounce
+  </div>
+
+  <!-- Pulse Animation -->
+  <div class="w-24 h-24 bg-red-500 rounded-xl animate-pulse flex items-center justify-center text-white font-bold">
+    Pulse
+  </div>
+
+  <!-- Ping Animation -->
+  <div class="relative">
+    <div class="absolute inline-flex h-24 w-24 rounded-full bg-green-400 opacity-75 animate-ping"></div>
+    <div class="relative w-24 h-24 bg-green-500 rounded-full flex items-center justify-center text-white font-bold">
+      Ping
+    </div>
+  </div>
+
+  <!-- Spin Animation -->
+  <div class="w-24 h-24 border-8 border-purple-500 border-t-transparent rounded-full animate-spin">
+  </div>
+</body>
+</html>
