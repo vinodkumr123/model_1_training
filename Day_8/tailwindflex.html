@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>Tailwind Flex Layout</title>
+</head>
+<body class="bg-gray-100 p-5">
+  <!-- Main Flex Container -->
+  <div class="flex flex-col md:flex-row gap-5">
+    <!-- Left Sidebar -->
+    <div class="bg-blue-500 text-white p-5 rounded-xl w-full md:w-1/4">
+      <h2 class="text-2xl font-bold mb-3">Sidebar</h2>
+      <div class="flex flex-col gap-3">
+        <button class="bg-white text-blue-500 py-2 rounded-lg">
+          Home
+        </button>
+        <button class="bg-white text-blue-500 py-2 rounded-lg">
+          About
+        </button>
+        <button class="bg-white text-blue-500 py-2 rounded-lg">
+          Contact
+        </button>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="bg-white p-5 rounded-xl shadow-md flex-1">
+      <!-- Navbar -->
+      <div class="flex justify-between items-center border-b pb-4 mb-5">
+        <h1 class="text-3xl font-bold">
+          Dashboard
+        </h1>
+        <button class="bg-blue-500 text-white px-4 py-2 rounded-lg">
+          Sign In
+        </button>
+      </div>
+      <!-- Cards -->
+      <div class="flex flex-wrap gap-5">
+        <div class="bg-red-500 text-white p-5 rounded-xl flex-1 min-w-[200px]">
+          Card 1
+        </div>
+        <div class="bg-green-500 text-white p-5 rounded-xl flex-1 min-w-[200px]">
+          Card 2
+        </div>
+        <div class="bg-purple-500 text-white p-5 rounded-xl flex-1 min-w-[200px]">
+          Card 3
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
