@@ -1,0 +1,30 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    </head>
+    <body>
+        <div id="container1" style="width: 200px; height: 200px; background-color: lightgray; position: relative; margin: 10px;">
+            <div id="movingDiv" style="width: 100px; height: 100px; background-color: lightblue; position: absolute; top: 0; left: 0;">
+                Moving Div
+            </div>
+        </div>
+        <div id="container2" style="width: 200px; height: 200px; background-color: lightgray; position: relative; margin: 10px;">
+        </div>
+        <button id="moveButton" >Move Div</button>
+        
+        <script>
+            $(document).ready(function(){
+                $("#movingDiv").draggable({
+                    containment: "parent"
+                });
+            });
+            $("#moveButton").click(function(){
+                $("#movingDiv").appendTo("#container2");
+            });
+        </script>
+    </body>
+    </html>
