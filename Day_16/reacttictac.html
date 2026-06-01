@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Tic Tac Toe React Game</title>
+
+  <!-- React CDN -->
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+
+  <!-- Babel CDN -->
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background: #1e1e2f;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: white;
+    }
+
+    .game-container {
+      text-align: center;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      font-size: 40px;
+    }
+
+    .board {
+      display: grid;
+      grid-template-columns: repeat(3, 120px);
+      gap: 10px;
+      justify-content: center;
+      margin: 20px auto;
+    }
+
+    .cell {
+      width: 120px;
+      height: 120px;
+      background: white;
+      border: none;
+      font-size: 50px;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 10px;
+      transition: 0.3s;
+    }
+
+    .cell:hover {
+      background: #dcdcdc;
+    }
+
+    .status {
+      font-size: 24px;
+      margin-top: 20px;
+    }
+
+    .reset-btn {
+      margin-top: 20px;
+      padding: 12px 25px;
+      font-size: 18px;
+      border: none;
+      background: #00b894;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .reset-btn:hover {
+      background: #019875;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="root"></div>
+
+  <script type="text/babel">
+    function TicTacToe() {
+      const [board, setBoard] = React.useState(Array(9).fill(null));
+      const [isXTurn, setIsXTurn] = React.useState(true);
+
+      const winningCombinations = [
+        [0,1,2],
+        [3,4,5],
+        [6,7,8],
+        [0,3,6],
+        [1,4,7],
+        [2,5,8],
+        [0,4,8],
+        [2,4,6]
+      ];
+
+      function checkWinner(board) {
+        for (let combo of winningCombinations) {
+          const [a, b, c] = combo;
+
+          if (
+            board[a] &&
+            board[a] === board[b] &&
+            board[a] === board[c]
+          ) {
+            return board[a];
+          }
+        }
+
+        return null;
+      }
+
+      const winner = checkWinner(board);
+
+      function handleClick(index) {
+        if (board[index] || winner) return;
+
+        const newBoard = [...board];
+        newBoard[index] = isXTurn ? "X" : "O";
+
+        setBoard(newBoard);
+        setIsXTurn(!isXTurn);
+      }
+
+      function resetGame() {
+        setBoard(Array(9).fill(null));
+        setIsXTurn(true);
+      }
+
+      return (
+        <div className="game-container">
+          <h1>Tic Tac Toe</h1>
+
+          <div className="board">
+            {board.map((cell, index) => (
+              <button
+                key={index}
+                className="cell"
+                onClick={() => handleClick(index)}
+              >
+                {cell}
+              </button>
+            ))}
+          </div>
+
+          <div className="status">
+            {winner 
+              ? `Winner: ${winner}`
+              : board.every(cell => cell)
+              ? "It's a Draw!"
+              : `Turn: ${isXTurn ? "X" : "O"}`}
+          </div>
+
+          <button className="reset-btn" onClick={resetGame}>
+            Restart Game
+          </button>
+        </div>
+      );
+    }
+
+    ReactDOM.createRoot(document.getElementById("root")).render(<TicTacToe />);
+  </script>
+
+</body>
+</html>
